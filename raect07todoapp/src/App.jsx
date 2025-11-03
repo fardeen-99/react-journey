@@ -1,19 +1,21 @@
 import { useState,useEffect } from 'react'
 
-import { IoMdCheckmark 
-} from "react-icons/io";
-import { MdDelete } from "react-icons/md";
+
 
 import './App.css'
+import { Todoapp } from './assets/todo';
+import { Todolist } from './assets/todolist';
+import { Clearbtn } from './assets/allclear';
 
 function App() {
   const [input, setinput] = useState("")
-  const [task, settask] = useState([])
+  const [task, settask] = useState(()=>{
+    const local=localStorage.getItem("todos")
+    if(!local)return []
+     return JSON.parse(local)
+  })
 const[date,setdate]=useState("")
-const inputchange =(value)=>{
-  setinput(value)
 
-}
 const formsubmit =(e)=>{
   e.preventDefault()
    if(input==="")return;
@@ -25,13 +27,16 @@ if(task.includes(input)){
 };
 
 settask((prev)=>
-  [...prev,input]
+  [...prev,{text:input, completed: false }]
 )
 
 setinput("")
 
 
 }
+
+localStorage.setItem("todos",JSON.stringify(task))
+
 useEffect(()=>{
 
   setInterval(() => {
@@ -44,42 +49,40 @@ useEffect(()=>{
 },[])
 
 const kato=(value)=>{
-  settask((prev)=>prev.filter((task)=>task!==value))
+  settask((prev)=>prev.filter((todo)=>todo.text!==value))
 
 }
+
+
+const toggleComplete = (text) => {
+  settask((prev) =>
+    prev.map((todo) =>
+      todo.text === text ? { ...todo, completed: !todo.completed } : todo
+    )
+  );
+};
+
   return (
     <>
     <div className="cont">
+
       <h1>my-todo-app</h1>
+
+
       <div className="date">{date}</div>
-      <form  onSubmit={formsubmit} >
-        <input type="text"
-        placeholder='type....'
-        value={input}
-        onChange={(e)=>inputchange(e.target.value)}
-        />
 
 
-        <button >add</button>
-      </form>
+      
+ <Todoapp addtodo={formsubmit}  setinput={setinput} input={input}/>
 <div className="list">
 <ul>
  {task.map((ele,index)=>{
   return(
-<li key={index}>
-<span>{ele}</span>
-<IoMdCheckmark style={{color:'green',fontSize:'20px'} } />
-<MdDelete style={{color:'red',fontSize:'20px'}}  onClick={()=>kato(ele)}/>
-
-</li>
+<Todolist ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} />
   )
  })}
 </ul>
-<button className='btn' onClick={()=>{
-  return(
-  settask([])
-  )
-}}>clear</button>
+<Clearbtn settask={settask} />
 
 </div>
 
@@ -90,5 +93,7 @@ const kato=(value)=>{
     </>
   )
 }
+
+
 
 export default App

@@ -16,6 +16,7 @@ html,body{
 
 .cont{
   width: 60%;
+  /* height: 100%; */
   margin: auto;
   padding: 10px;
 display: flex;
@@ -25,7 +26,7 @@ justify-content: center;
 }
 
 form{
-width: 50%;
+width: 65%;
 padding: 20px;
 border-radius: 20px;
 background-color: rgb(105, 105, 29);
@@ -36,23 +37,34 @@ justify-content: center;
 }
 
 button{
+  text-transform: uppercase;
   border: none;
-  padding: 9px 18px;
+  padding: 19px 28px;
+  /* padding: 9px 18px; */
   color: white;
   background-color: green;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 input{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   outline: none;
   border: none;
-  padding: 9px 18px;
+  padding: 19px 28px;
 }
 .list{
-  width: 40%;
+  min-width: 40%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+input::placeholder{
+  text-align: center;
+  text-transform: uppercase;
+
 }
 ul{
   width: 100%;
@@ -61,7 +73,12 @@ ul{
   gap: 10px;
   
 }
+li span{
+  width: 33%;
+  
+}
 li{
+  word-break: break-all;
   text-transform: uppercase;
   list-style: none;
   width: 100%;
@@ -75,6 +92,8 @@ li{
 }
 h1{
   margin: 20px 0;
+  text-transform: uppercase;
+  color: crimson;
 }
 .date{
   font-size: large;
@@ -84,7 +103,55 @@ h1{
   width: 40%;
   /* margin: auto; */
 margin-top: 1.5rem;
-border-radius: 15px;
+border-radius: 25px;
 background-color: red;
 
 }
+@media (max-width:600px) {
+  form{
+width: 80%;
+margin: auto;
+
+  }
+  .input{
+    width: 30%;
+  }
+  .btn{
+    width: 70%;
+  }
+   .cont{
+    width: 100%;
+   }
+   .list{
+    min-width: 70%;
+    font-size: 10px;
+   }
+   li span{
+    font-size: 13px;
+   }
+   input, button{
+padding: 14px 15px;
+   }
+  }
+  @media(max-width:1000px) {
+    
+    .cont{
+  width: 100%;
+  margin: auto;
+  
+    }
+    .list{
+      width: 40%;
+      margin: none auto;
+    }
+  }
+  @media(max-width:350px) {
+    .cont,form{
+
+      width: 100%;
+    }
+input{
+  padding: 15px 6px;
+  width:69%;
+}
+  }
