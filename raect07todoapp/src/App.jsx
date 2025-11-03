@@ -18,13 +18,14 @@ const[date,setdate]=useState("")
 
 const formsubmit =(e)=>{
   e.preventDefault()
-   if(input==="")return;
+   if(input.trim()==="")return;
 if(task.includes(input)){
   
   
   setinput("")
   return
 };
+
 
 settask((prev)=>
   [...prev,{text:input, completed: false }]
