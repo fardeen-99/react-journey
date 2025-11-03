@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 
 
@@ -9,86 +9,86 @@ import { Clearbtn } from './assets/allclear';
 
 function App() {
   const [input, setinput] = useState("")
-  const [task, settask] = useState(()=>{
-    const local=localStorage.getItem("todos")
-    if(!local)return []
-     return JSON.parse(local)
+  const [task, settask] = useState(() => {
+    const local = localStorage.getItem("todos")
+    if (!local) return []
+    return JSON.parse(local)
   })
-const[date,setdate]=useState("")
+  const [date, setdate] = useState("")
 
-const formsubmit =(e)=>{
-  e.preventDefault()
-   if(input.trim()==="")return;
-if(task.includes(input)){
-  
-  
-  setinput("")
-  return
-};
+  const formsubmit = (e) => {
+    e.preventDefault()
+    if (input.trim() === "") return;
+    if (task.includes(input)) {
 
 
-settask((prev)=>
-  [...prev,{text:input, completed: false }]
-)
-
-setinput("")
+      setinput("")
+      return
+    };
 
 
-}
-
-localStorage.setItem("todos",JSON.stringify(task))
-
-useEffect(()=>{
-
-  setInterval(() => {
-    
-    let date=new Date()
-    let pro=date.toLocaleDateString()
-    let time=date.toLocaleTimeString()
-    setdate(`${pro}-${time}`)
-  }, 1000);
-},[])
-
-const kato=(value)=>{
-  settask((prev)=>prev.filter((todo)=>todo.text!==value))
-
-}
-
-
-const toggleComplete = (text) => {
-  settask((prev) =>
-    prev.map((todo) =>
-      todo.text === text ? { ...todo, completed: !todo.completed } : todo
+    settask((prev) =>
+      [...prev, { text: input, completed: false }]
     )
-  );
-};
+
+    setinput("")
+
+
+  }
+
+  localStorage.setItem("todos", JSON.stringify(task))
+
+  useEffect(() => {
+
+    setInterval(() => {
+
+      let date = new Date()
+      let pro = date.toLocaleDateString()
+      let time = date.toLocaleTimeString()
+      setdate(`${pro}-${time}`)
+    }, 1000);
+  }, [])
+
+  const kato = (value) => {
+    settask((prev) => prev.filter((todo) => todo.text !== value))
+
+  }
+
+
+  const toggleComplete = (text) => {
+    settask((prev) =>
+      prev.map((todo) =>
+        todo.text === text ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
   return (
     <>
-    <div className="cont">
+      <div className="cont">
 
-      <h1>my-todo-app</h1>
-
-
-      <div className="date">{date}</div>
+        <h1>my-todo-app</h1>
 
 
-      
- <Todoapp addtodo={formsubmit}  setinput={setinput} input={input}/>
-<div className="list">
-<ul>
- {task.map((ele,index)=>{
-  return(
-<Todolist ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} />
-  )
- })}
-</ul>
-<Clearbtn settask={settask} />
-
-</div>
+        <div className="date">{date}</div>
 
 
-    </div>
+
+        <Todoapp addtodo={formsubmit} setinput={setinput} input={input} />
+        <div className="list">
+          <ul>
+            {task.map((ele, index) => {
+              return (
+                <Todolist ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} />
+              )
+            })}
+          </ul>
+          <Clearbtn settask={settask} />
+
+        </div>
+
+
+      </div>
 
 
     </>
