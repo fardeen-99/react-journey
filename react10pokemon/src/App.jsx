@@ -8,7 +8,7 @@ function App() {
   const [error, seterror] = useState("")
   const [search, setsearch] = useState('')
 
-const API = "https://pokeapi.co/api/v2/pokemon?limit=124";
+const API = "https://pokeapi.co/api/v2/pokemon?limit=160";
 let Card =async()=>{
 try{
 let res= await fetch(API)
