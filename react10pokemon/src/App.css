@@ -1,0 +1,125 @@
+/* === Global Styling === */
+body {
+  background-color: #f5f7fb;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Title === */
+.title {
+  text-align: center;
+  color: #333;
+  font-size: 2.2rem;
+  margin-top: 30px;
+  letter-spacing: 1px;
+}
+
+/* === Search Bar === */
+.search {
+  display: block;
+  margin: 20px auto 40px auto;
+  padding: 12px 25px;
+  width: 300px;
+  border-radius: 25px;
+  border: 2px solid #4caf50;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.search:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+/* === All Cards Grid === */
+.allcards {
+display: flex;
+flex-wrap: wrap;
+width: 90%;
+margin: auto;
+  gap: 20px;
+  /* padding: 0 40px 40px; */
+  justify-items: center;
+  align-items: center;
+}
+
+/* === Individual Card === */
+.card {
+  /* margin-top: 1rem; */
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 244px;
+  margin: 1rem auto;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* === Image Area === */
+.card-img {
+  background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
+  border-radius: 16px;
+  padding: 10px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* === Pokémon Name === */
+.heading {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  color: #333;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+/* === Type Tag === */
+.type {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+/* === Stats Grid Inside Card === */
+.stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 12px;
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.stats b {
+  color: #2e7d32;
+  font-weight: 600;
+}

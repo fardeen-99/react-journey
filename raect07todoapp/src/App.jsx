@@ -17,7 +17,7 @@ function App() {
   const [date, setdate] = useState("")
 
   const formsubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault() 
     if (input.trim() === "") return;
     if (task.includes(input)) {
 
