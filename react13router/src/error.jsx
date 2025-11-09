@@ -1,13 +1,25 @@
-export const Error=()=>{
+import { NavLink, useRouteError } from "react-router-dom";
 
-return(
 
-<>
+export const Error = () => {
 
-<h1>error 404 not found</h1>
+    let error=useRouteError()
+    console.log(error)
 
-</>
 
-)
+    if(error.status===404){
+  return (
+    <>
+     
 
+      <div className="imgg" style={{ display: "flex", alignItems: "center", flexDirection:"column",gap:"3rem" }}>
+     <img src="https://www.digitalmesh.com/blog/wp-content/uploads/2020/05/404-error.jpg" alt="" />
+
+
+      <NavLink className="lola" to="/">go to home page</NavLink>
+      </div>
+
+    </>
+  );
 }
+};

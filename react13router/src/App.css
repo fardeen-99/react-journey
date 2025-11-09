@@ -1011,3 +1011,32 @@ body.blur-active .lion {
  #main3{
   margin-top: 3.5rem;
  }
+
+ .imgg{
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  
+ }
+ .imgg img{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+ }
+ .lola{
+    border: 2px solid purple;
+    padding: 10px 50px;
+    text-transform: uppercase;
+color: black;
+   
+    border-radius: 16px;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    text-align: center;
+ }
+ .lola:hover{
+    background-color: purple;
+    color: white;
+    transition: 0.3s ease;
+ }
