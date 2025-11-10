@@ -7,6 +7,7 @@ import { About } from './component/about'
 import { Movie } from './component/movie'
 import { Contact } from './component/contact'
 import { Error } from './component/error'
+import { MovieApi } from './component/movieapi'
 
 function App() {
 
@@ -35,7 +36,8 @@ element:<About />
 },
 {
   path:"/movie",
-  element:<Movie />
+  element:<Movie />,
+  loader: MovieApi
 },
 {
   path:"/contact",
