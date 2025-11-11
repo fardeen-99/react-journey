@@ -1,18 +1,25 @@
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 
 export const Movie=()=>{
 
     let load=useLoaderData()
+  let navi=  useNavigate()
     console.log(load)
 return(
 
     <>
-    <ul>
+    <ul className="bax" style={{flexWrap:"wrap",gap:"2.5rem",padding:"2rem 0px"}}>
     {load.map((ele)=>(
-<li key={ele.show.id}>
-    <img src={ele.show.image.medium} alt="" />
-    {/* {ele.genres.map((kele)=>kele[1])} */}
-    <p style={{textTransform:"uppercase",fontWeight:"600px"}}>{ele.show.genres.join(" , ")}</p>
+<li key={ele.show.id} className="bax" style={{width:"20%",padding:"0"}}>
+    
+
+
+    <div className="card">
+       <img src= {ele.show.image.medium} alt="" />
+    <button  onClick={()=>navi(`/movie/${ele.show.id}`)}>watch-now</button>
+    </div>
+
+ 
 
 
 </li>

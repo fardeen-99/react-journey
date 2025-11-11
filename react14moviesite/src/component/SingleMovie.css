@@ -1,0 +1,106 @@
+/* ---- Overall container ---- */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* ---- Single movie card ---- */
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 90%;
+  max-width: 950px;
+  padding: 30px;
+  gap: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Image section ---- */
+.one img {
+  width: 350px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Details section ---- */
+.two {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #2d3436;
+}
+
+.two p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.two h1 {
+  font-size: 1.8rem;
+  color: #0984e3;
+  margin: 5px 0;
+}
+
+.two h2.lopi {
+  color: #636e72;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.two strong {
+  color: #000;
+}
+
+.two .rating {
+  color: #00b894;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+/* ---- Responsive design ---- */
+@media (max-width: 768px) {
+  li {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .one img {
+    width: 100%;
+    height: auto;
+  }
+
+  .two {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .two h1 {
+    font-size: 1.4rem;
+  }
+
+  .two h2.lopi {
+    font-size: 1rem;
+  }
+}

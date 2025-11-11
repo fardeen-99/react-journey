@@ -5,9 +5,11 @@ import { Applayout } from './applayout'
 import { Home } from './component/home'
 import { About } from './component/about'
 import { Movie } from './component/movie'
-import { Contact } from './component/contact'
+import { Contacaction, Contact } from './component/contact'
 import { Error } from './component/error'
 import { MovieApi } from './component/movieapi'
+import { SingleMovie } from './component/Singlemovie'
+import { SingleApi } from './component/single'
 
 function App() {
 
@@ -40,8 +42,14 @@ element:<About />
   loader: MovieApi
 },
 {
+  path:"/movie/:id",
+  element:<SingleMovie />,
+  loader: SingleApi
+},
+{
   path:"/contact",
-  element:<Contact />
+  element:<Contact />,
+  action: Contacaction
 }
 
 ]
