@@ -39,7 +39,7 @@ element:<About />
 {
   path:"/movie",
   element:<Movie />,
-  loader: MovieApi
+  loader: MovieApi,
 },
 {
   path:"/movie/:id",
@@ -49,7 +49,7 @@ element:<About />
 {
   path:"/contact",
   element:<Contact />,
-  action: Contacaction
+  action: Contacaction,
 }
 
 ]

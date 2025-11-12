@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Form, useActionData } from "react-router-dom";
 
 
@@ -11,32 +12,34 @@ let gomuk=Object.fromEntries(aloo)
 
 console.log(gomuk)
 
-let inp=document.querySelectorAll("input")
-inp.textcontent=""
 
-
+return { success:true }
 
 }
+console.log(Contacaction)
 export const Contact = () => {
 
-const data=useActionData()
+let data=useActionData()
+let formref=useRef()
 
+console.log(data);
 
+useEffect(()=>{
+
+if(data?.success){
+ formref.current.reset()
+}
+
+},[data]);
 
  
   return (
     <div className="contact-container">
       <div className="contact-card">
         <h1>Contact Us</h1>
-        <p>We’d love to hear from you! Please fill out the form below 👇</p>
 
-        {data?.success && (
-          <div className="success-message">
-            ✅ Thanks {data.name}! Your message has been received.
-          </div>
-        )}
 
-        <Form  method="post" action="/contact" >
+        <Form  ref={formref} method="post" >
           <div className="input-group">
             <label htmlFor="name">Your Name</label>
             <input

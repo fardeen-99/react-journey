@@ -8,9 +8,9 @@ export const Movie=()=>{
 return(
 
     <>
-    <ul className="bax" style={{flexWrap:"wrap",gap:"2.5rem",padding:"2rem 0px"}}>
+    <ul className="box" style={{flexWrap:"wrap",gap:"2.5rem",padding:"2rem 0px"}}>
     {load.map((ele)=>(
-<li key={ele.show.id} className="bax" style={{width:"20%",padding:"0"}}>
+<li key={ele.show.id} className="bax" style={{padding:"0"}}>
     
 
 

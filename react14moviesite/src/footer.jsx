@@ -1,7 +1,18 @@
+import { useRef } from "react";
 
 
 
 export function Footer() {
+let khali=useRef()
+console.log(khali)
+const submitu=(e)=>{
+e.preventDefault()
+
+{khali.current.value=""}
+
+
+}
+
   return (
     <footer className="site-footer" role="contentinfo">
       <div className="footer-inner">
@@ -43,9 +54,9 @@ export function Footer() {
             <a className="ad-cta" href="/advertise">Advertise with us</a>
           </div>
 
-          <form className="newsletter" onSubmit={(e) => e.preventDefault()} aria-label="Subscribe to newsletter">
+          <form className="newsletter" onSubmit={submitu} aria-label="Subscribe to newsletter">
             <label htmlFor="footer-email" className="sr-only">Email</label>
-            <input id="footer-email" type="email" placeholder="Your email" className="email-input" required />
+            <input id="footer-email" type="email" placeholder="Your email" className="email-input" ref={khali} required />
             <button className="btn-submit" type="submit">Subscribe</button>
             <p className="small-note">No spam. Unsubscribe anytime.</p>
           </form>
