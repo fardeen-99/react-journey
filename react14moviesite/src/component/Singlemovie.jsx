@@ -16,7 +16,7 @@ return(
 <p>{ele.show.name}</p>
 <h1>{ele.show.language}</h1>
 <h2 className="lopi">{ele.show.genres.join(" , ")}</h2>
-<p>
+<p className="popi">
   Story-lineup:{" "}
   {ele.show.summary
     ? ele.show.summary.replace(/<[^>]+>/g, "") // removes <p>, <b>, etc.

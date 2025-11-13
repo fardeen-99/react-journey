@@ -10,9 +10,11 @@ export const Header = () => {
   // Freeze scroll & add blur class when menu is open
   useEffect(() => {
     const mainContent = document.querySelector(".main-content");
+ 
     if (menuOpen) {
       document.body.style.overflow = "hidden";
       mainContent?.classList.add("blur-active");
+      // over.classList.remove("blur-active");
     } else {
       document.body.style.overflow = "auto";
       mainContent?.classList.remove("blur-active");
@@ -24,7 +26,7 @@ export const Header = () => {
   return (
     <>
       <header className="navbar">
-        <div className="logo">MyWebsite</div>
+        <div className="logo">BATMAN'S WORLD</div>
 
         {/* Desktop Links */}
         <nav className="nav-links">

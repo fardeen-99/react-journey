@@ -78,7 +78,7 @@ if(data?.success){
           </div>
 
           <button type="submit" className="submit-btn">
-            Send Message 🚀
+            Send Message 
           </button>
         </Form>
       </div>
