@@ -1,4 +1,4 @@
-import {NavLink} from React
+import {NavLink} from 'react-router-dom'
 export const Home = () => {
   return (
     <div className="home-container">
@@ -13,6 +13,7 @@ export const Home = () => {
           <NavLink to="/movie" className="hero-btn">
             Explore Movies
           </NavLink>
+          
         </div>
       </section>
 
