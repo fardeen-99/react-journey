@@ -3,7 +3,7 @@ import { IoMdCheckmark
 import { MdDelete } from "react-icons/md";
 
 
-export function Todolist({ele,index,kato,toggleComplete}){
+export function Todolist({ele,index,kato,toggleComplete,editing,edit}){
 
     
       return(
@@ -20,6 +20,10 @@ export function Todolist({ele,index,kato,toggleComplete}){
 />
 
 <MdDelete style={{color:'red',fontSize:'20px'}}  onClick={()=>kato(ele.text)}/>
+
+
+<span onClick={()=>editing(index)}>edit</span>
+
 
 </li>
   )

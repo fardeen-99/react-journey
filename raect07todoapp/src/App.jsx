@@ -9,6 +9,7 @@ import { Clearbtn } from './assets/allclear';
 
 function App() {
   const [input, setinput] = useState("")
+  const [edit,setedit]=useState(null)
   const [task, settask] = useState(() => {
     const local = localStorage.getItem("todos")
     if (!local) return []
@@ -26,6 +27,17 @@ function App() {
       return
     };
 
+
+  if (edit !== null) {
+    settask((prev) =>
+      prev.map((todo, i) =>
+        i === edit ? { ...todo, text: input } : todo
+      )
+    );
+    setinput("");
+    setedit(null);
+    return;
+  }
 
     settask((prev) =>
       [...prev, { text: input, completed: false }]
@@ -63,6 +75,14 @@ function App() {
     );
   };
 
+
+  const editing=(index)=>{
+setinput(task[index].text)
+
+setedit(index)
+  }
+  
+
   return (
     <>
       <div className="cont">
@@ -79,7 +99,7 @@ function App() {
           <ul>
             {task.map((ele, index) => {
               return (
-                <Todolist ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} />
+                <Todolist  edit={edit} ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} editing={editing} />
               )
             })}
           </ul>

@@ -1,0 +1,94 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("https://img.freepik.com/free-photo/top-view-desk-concept-with-notepad_23-2148604955.jpg?semt=ais_hybrid&w=740&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Calculator container */
+.input {
+  width: 280px;
+  margin-bottom: 15px;
+}
+
+.input input {
+  width: 100%;
+  padding: 18px;
+  font-size: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  color: black;
+  text-align: right;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Buttons grid */
+.box {
+  width: 280px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Button base style */
+button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Hover effect */
+button:hover {
+  background: #e0e0e0;
+}
+
+/* Special buttons */
+button:nth-child(13),  /* * button */
+button:nth-child(14),  /* / button */
+button:nth-child(15)   /* c button */
+{
+  background: #fddede;
+  color: #e60000;
+}
+
+button:nth-child(16), /* = button */
+button:nth-child(17)  /* dlt button */
+{
+  background: #d0e8ff;
+  color: #004f9e;
+}
+
+.pop {
+  width: 280px;
+  margin-top: 10px;
+  padding: 18px;
+  font-size: 22px;
+  border-radius: 10px;
+  background: #d4ffd4;
+  color: #006600;
+}
+
+/* Hover for 0 button */
+.pop:hover {
+  background: #c1f7c1;
+}
