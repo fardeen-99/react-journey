@@ -19,11 +19,15 @@ function App() {
   const savedExpense = JSON.parse(localStorage.getItem("expense"));
   const savedTrans = JSON.parse(localStorage.getItem("transction"));
   const savedExpTrans = JSON.parse(localStorage.getItem("exptransction"));
+  const value1 = JSON.parse(localStorage.getItem("val"));
+  const value2 = JSON.parse(localStorage.getItem("val2"));
 
   if (savedIncome) setincome(savedIncome);
   if (savedExpense) setexpense(savedExpense);
   if (savedTrans) settransaction(savedTrans);
   if (savedExpTrans) setexptransaction(savedExpTrans);
+  if (value1) setval(value1);
+  if (value2) setval(value2);
 }, []);
 
   // --------------------------
@@ -70,7 +74,9 @@ settransaction((prev)=>[...prev,{name:val,amoun: amount}])
     localStorage.setItem("expense", JSON.stringify(expense));
     localStorage.setItem("transction", JSON.stringify(transction));
     localStorage.setItem("exptransction", JSON.stringify(exptransction));
-  }, [income, expense, transction, exptransction]);
+    localStorage.setItem("val1", JSON.stringify(val));
+    localStorage.setItem("val2", JSON.stringify(val2));
+  }, [income, expense, transction, exptransction,val,val2]);
 
   return (
     <>

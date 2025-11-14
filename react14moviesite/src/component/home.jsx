@@ -1,4 +1,4 @@
-
+import {NavLink} from React
 export const Home = () => {
   return (
     <div className="home-container">
@@ -10,9 +10,9 @@ export const Home = () => {
             Step into the shadows and explore the cinematic legacy of the Dark
             Knight. Discover his journey, his allies, and his enemies.
           </p>
-          <a href="/movie" className="hero-btn">
+          <NavLink to="/movie" className="hero-btn">
             Explore Movies
-          </a>
+          </NavLink>
         </div>
       </section>
 
@@ -25,9 +25,9 @@ export const Home = () => {
           Explore Gotham’s greatest stories and experience the legend of Batman
           like never before.
         </p>
-        <a href="/about" className="cta-btn">
+        <NavLink to="/about" className="cta-btn">
           Learn More
-        </a>
+        </NavLink>
       </section>
 
       {/* Footer */}
