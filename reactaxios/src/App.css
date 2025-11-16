@@ -1,0 +1,144 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body,#root{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+ol {
+  counter-reset: mycounter;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+li {
+  list-style: none;
+  counter-increment: mycounter;
+  position: relative;
+
+  color: black;
+  padding: 25px 20px 20px 60px;
+  border-radius: 15px;
+  background-color: seagreen;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Number badge */
+li::before {
+  content: counter(mycounter);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  width: 32px;
+  height: 32px;
+  background: white;
+  color: seagreen;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Title */
+.f {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Body */
+.s {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:first-of-type {
+  background: #4e8cff;
+  color: white;
+}
+
+button:last-of-type {
+  background: #ff4e4e;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+main{
+  
+}
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  /* flex-direction: column; */
+  gap: 1rem;
+}
+
+/* INPUTS */
+form input {
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+form input:focus {
+  border-color: seagreen;
+  box-shadow: 0 0 6px rgba(46, 139, 87, 0.3);
+}
+
+/* BUTTON */
+form button {
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  background: seagreen;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #277f55;
+  transform: translateY(-2px);
+}
