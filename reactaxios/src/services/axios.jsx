@@ -30,3 +30,11 @@ Api.post("/posts",post)
 )
 
 }
+export const Putapi=(id,post)=>{
+
+return(
+Api.put(`/posts/${id}`,post)
+
+)
+
+}

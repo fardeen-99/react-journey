@@ -9,7 +9,7 @@ import { Clearbtn } from './assets/allclear';
 
 function App() {
   const [input, setinput] = useState("")
-  const [edit,setedit]=useState(null)
+  const [edit,setedit]=useState({})
   const [task, settask] = useState(() => {
     const local = localStorage.getItem("todos")
     if (!local) return []
@@ -17,35 +17,49 @@ function App() {
   })
   const [date, setdate] = useState("")
 
-  const formsubmit = (e) => {
+
+let isempty=Object.keys(edit).length===0
+
+
+const formsubmit = (e) => {
+    const action=e.nativeEvent.submitter.value
     e.preventDefault() 
-    if (input.trim() === "") return;
-    if (task.includes(input)) {
+    if(action==="add"){
 
-
-      setinput("")
-      return
-    };
-
-
-  if (edit !== null) {
-    settask((prev) =>
-      prev.map((todo, i) =>
-        i === edit ? { ...todo, text: input } : todo
+      if (input.trim() === "") return;
+      if (task.includes(input)) {
+  
+  
+        setinput("")
+        return
+      };
+  
+  
+  
+  
+  
+      settask((prev) =>
+        [...prev, { text: input, completed: false }]
       )
-    );
-    setinput("");
-    setedit(null);
-    return;
-  }
+  
+      setinput("")
 
-    settask((prev) =>
-      [...prev, { text: input, completed: false }]
+    }  
+
+   else if(action==="edit"){
+    
+    settask((prev)=>{
+      return(
+    
+      
+    prev.map((item,i)=>
+    i===edit.id?{...item,text:input}:item
     )
-
+    )
+    })
     setinput("")
-
-
+    setedit({})
+    }
   }
 
   localStorage.setItem("todos", JSON.stringify(task))
@@ -76,10 +90,12 @@ function App() {
   };
 
 
-  const editing=(index)=>{
-setinput(task[index].text)
+  const editing=(ele)=>{
 
-setedit(index)
+
+setedit(ele)
+setinput(ele.text)
+
   }
   
 
@@ -94,12 +110,12 @@ setedit(index)
 
 
 
-        <Todoapp addtodo={formsubmit} setinput={setinput} input={input} />
+        <Todoapp isempty={isempty} addtodo={formsubmit} setinput={setinput} input={input} />
         <div className="list">
           <ul>
             {task.map((ele, index) => {
               return (
-                <Todolist  edit={edit} ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} editing={editing} />
+                <Todolist   ele={ele} index={index} kato={kato} toggleComplete={toggleComplete} editing={editing} />
               )
             })}
           </ul>

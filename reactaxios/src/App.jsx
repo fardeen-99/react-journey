@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import './App.css'
-import { Dltapi, Getapi, Postapi } from './services/axios'
+import { Dltapi, Getapi, Postapi, Putapi } from './services/axios'
 import { useState } from 'react'
 
 
 function App() {
   const [data,setdata]=useState([])
-
+  const[edit,setedit]=useState({})
+  
   const getdataapi=async()=>{
   let res=await Getapi()
   if(res.status===200){
@@ -19,6 +20,12 @@ setdata(res.data)
 
 
   }
+
+
+
+  let isempty= Object.keys(edit).length===0
+  console.log(isempty);
+  
 // console.log(data)
 useEffect(()=>{
 getdataapi()
@@ -70,26 +77,75 @@ if(res.status===201){
   }
 }
 // console.log(data)
+
+
+const editkaro=async()=>{
+let res=await Putapi(edit.id,form)
+if(res.status===200){
+
+setdata((prev)=>{
+
+return(
+prev.map((item)=>
+item.id===res.data.id?res.data:item
+
+)
+
+
+)
+
+})
+
+setform({title:"",body:""})
+setedit({})
+
+
+}
+
+
+}
+
+
 const submit=(e)=>{
  e.preventDefault()
 
   if (!form.title.trim() || !form.body.trim()) return;
 
+const action=e.nativeEvent.submitter.value
+if(action==="add"){
+  
+  getpostapi()
+}
+else if(action==="edit"){
 
+editkaro()
+
+}
  
- getpostapi()
 
 
 
 }
+
+
 const handledit=(ele)=>{
-setform({
-  title:ele.title,
-  body:ele.body
+
+setedit(ele)
+
+
+
+
+}
+useEffect(()=>{
+
+edit && setform({
+
+title:edit.title || "",
+body:edit.body || ""
+
 })
 
-
-}
+},[edit])
 
   return (
     <>
@@ -110,7 +166,7 @@ name="body"
 value={form.body}
 onChange={(e)=>handleform(e)}
 />
-<button>add</button>
+<button value={isempty?"add":"edit"}>{isempty?"add":"edit"}</button>
 
 
 </form>
@@ -123,8 +179,8 @@ return(
 
 <p className="f">{title}</p>
 <p className="s">{body}</p>
-<button onClick={()=>handledit(ele)}>edit</button>
-<button onClick={()=>handledlt(id)}>delete</button>
+<button onClick={()=>handledit(ele) }>edit</button>
+<button onClick={()=>handledlt(id)} >delete</button>
 
 </li>
 

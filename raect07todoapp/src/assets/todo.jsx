@@ -1,4 +1,4 @@
-export function Todoapp({addtodo,input,setinput}){
+export function Todoapp({isempty,addtodo,input,setinput}){
 
 const inputchange =(value)=>{
   setinput(value)
@@ -15,7 +15,7 @@ const inputchange =(value)=>{
                 />
         
         
-                <button type="click" onClick={addtodo} >add</button>
+                <button type="click" onClick={addtodo} value={isempty?"add":"edit"} >{isempty?"add":"edit"}</button>
               </form>
     )
 
