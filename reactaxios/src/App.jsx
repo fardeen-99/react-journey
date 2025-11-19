@@ -129,23 +129,26 @@ editkaro()
 
 
 const handledit=(ele)=>{
-
+setform({
+  title:ele.title || "",
+  body:ele.body || ""
+})
 setedit(ele)
 
 
 
 
 }
-useEffect(()=>{
+// useEffect(()=>{
 
-edit && setform({
+// edit && setform({
 
-title:edit.title || "",
-body:edit.body || ""
+// title:edit.title || "",
+// body:edit.body || ""
 
-})
+// })
 
-},[edit])
+// },[edit])
 
   return (
     <>

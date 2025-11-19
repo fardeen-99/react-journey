@@ -23,5 +23,10 @@
     "id": 5,
     "question": "What is JSX in React?",
     "answer": "JSX is a syntax extension that looks similar to HTML, but it’s actually used in React to describe the UI. JSX allows you to write HTML-like code within JavaScript, making the structure of components more readable and intuitive."
+  },
+  {
+    "id":6,
+    "question":"who is fardeen"
+    ,"answer":"fardenn is a web developer from ambedka institute of technology and his skills in html,css,javascript,react-js,mongo-DB,node-js,express and his dream is to become successfull one day and wanted to make his parent proud "
   }
 ]
