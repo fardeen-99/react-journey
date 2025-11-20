@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "label": "Address",
+    "value": "New Delhi, India",
+    "icon": "FaMapMarkerAlt"
+  },
+  {
+    "id": 2,
+    "label": "Phone",
+    "value": "+91 9810011454",
+    "icon": "FaPhoneAlt"
+  },
+  {
+    "id": 3,
+    "label": "Email",
+    "value": "fardeenkhan63574@gmail.com",
+    "icon": "MdEmail"
+  }
+  
+]

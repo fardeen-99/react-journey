@@ -1,0 +1,40 @@
+*{
+  margin: 0;padding: 0;box-sizing: border-box;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  font-family: "urbanist";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box{
+  width: 40%;
+  border: 1px solid black;
+  border-radius: 10px;
+
+}
+h1{
+  text-align: center;
+}
+.outer{
+  height: 20px;
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid blue;
+}
+.inner{
+  height: 20%;
+  width: 20%;
+  background-color: green;
+  border-radius: 20px;
+}
+button{
+  padding: 1rem 2rem;
+  border: none;
+  background-color: crimson
+  ;
+  border-radius: 10px;
+}

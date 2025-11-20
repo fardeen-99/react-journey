@@ -1,0 +1,50 @@
+*{
+  margin: 0;padding: 0;box-sizing: border-box;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  font-family: "urbanist";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.box{
+  width: 40%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+padding: 1rem;
+}
+span{
+    text-align: center;
+    font-size: 1.5rem;
+}
+h1{
+    text-align: center;
+}
+.outer{
+    height: 20px;
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid blue;
+}
+.inner{
+  height: 100%;
+  width: 2%;
+  background-color: green;
+  border-radius: 20px;
+}
+button{
+    padding: 1rem 2rem;
+    font-weight: 600;
+  border: none;
+  background-color: crimson
+  ;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}

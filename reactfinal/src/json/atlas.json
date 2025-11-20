@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "country": "India",
+    "capital": "New Delhi",
+    "continent": "Asia",
+    "population": 1420000000,
+    "fact": "India is the world's largest democracy and home to the Taj Mahal."
+  },
+  {
+    "id": 2,
+    "country": "United States",
+    "capital": "Washington, D.C.",
+    "continent": "North America",
+    "population": 339000000,
+    "fact": "The U.S. has the largest economy in the world."
+  },
+  {
+    "id": 3,
+    "country": "Brazil",
+    "capital": "Brasília",
+    "continent": "South America",
+    "population": 214000000,
+    "fact": "Brazil is home to the Amazon Rainforest, the largest tropical rainforest on Earth."
+  },
+  {
+    "id": 4,
+    "country": "Germany",
+    "capital": "Berlin",
+    "continent": "Europe",
+    "population": 84000000,
+    "fact": "Germany is known for its engineering excellence and is the birthplace of the automobile."
+  },
+  {
+    "id": 5,
+    "country": "Australia",
+    "capital": "Canberra",
+    "continent": "Australia/Oceania",
+    "population": 26000000,
+    "fact": "Australia is home to animals found nowhere else, like kangaroos and koalas."
+  },
+  {
+    "id": 6,
+    "country": "Egypt",
+    "capital": "Cairo",
+    "continent": "Africa",
+    "population": 112000000,
+    "fact": "Egypt is famous for the ancient pyramids and the Great Sphinx."
+  },
+  {
+    "id": 7,
+    "country": "Japan",
+    "capital": "Tokyo",
+    "continent": "Asia",
+    "population": 125000000,
+    "fact": "Japan is known for bullet trains and advanced technology, and it has more than 5 million vending machines."
+  }
+]
