@@ -9,3 +9,9 @@ const Api=axios.create({
 
 export const Getapi=()=>{
  return Api.get("/all?fields=name,population,region,capital,flags");}
+
+ export const getCountryIndData = (name) => {
+  return Api.get(
+    `/name/${name}?fullText=true&fields=name,population,region,subregion,capital,tld,currencies,languages,borders,flags`
+  );
+};

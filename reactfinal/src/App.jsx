@@ -6,6 +6,7 @@ import { Home } from "./pages/home"
 import{createBrowserRouter, RouterProvider}from 'react-router-dom'
 import "./App.css"
 import { Error } from "./pages/error"
+import { Singlecountry } from "./pages/singlecountry"
 const App=()=>{
 
 const router=createBrowserRouter([
@@ -25,6 +26,10 @@ element:<Home />
 {
   path:"/country",
   element:<Country />
+},
+{
+  path:"/country/:id",
+  element:<Singlecountry />
 },
 {
   path:"/contact",

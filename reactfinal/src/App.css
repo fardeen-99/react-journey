@@ -5,7 +5,7 @@
 html,body{
   height: 100%;
   width: 100%;
-  
+  background-color: #000000;
   /* font-size: 62.5%; */
 }
 nav{
@@ -136,12 +136,12 @@ color: white;
   border-radius: 12px;
 
   /* SAME GRADIENT */
-  background: linear-gradient(135deg, #000000, #1a1a1a);
-
+  
   color: white;
   font-family: Georgia, serif;
   line-height: 1.6;
-
+  
+  background: linear-gradient(135deg, #000000, #1a1a1a);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
   margin: 20px auto;
   /* border: 2px solid plum; */
@@ -307,4 +307,132 @@ justify-content: center;
     width: 100%;
     text-align: center;
   }
+}
+.cover{
+  width: 90%;
+color: white;
+margin: auto;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+gap: 3rem;
+padding: 5rem 0;
+}
+.olo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: center;
+  flex-direction: column;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+padding: 2rem 0;
+border-radius: 20px;
+text-transform: capitalize;
+}
+.olo p{
+  font-size: 1.1rem;
+}
+.image{
+  padding-bottom: .5rem;
+  width: 80%;
+  /* height: 19vh; */
+  margin: auto;
+}
+img{
+  
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.btn-b{
+  /* padding: 0 30px */
+  width: 80%;
+  margin-top: .4rem; 
+  cursor: pointer;
+}
+.container{
+  width: 90%;
+  margin: 2rem auto;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* padding: 5rem 0; */
+  min-height: 80vh;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+
+}
+.pehla{
+  /* height: 20vh; */
+width: 60%;
+margin: auto;
+}
+.doora{
+  display: flex;
+  flex-direction: column;
+  gap:.6rem;
+  color: wheat;
+  /* font-size: 1.3rem; */
+  text-transform: uppercase;
+}
+.lion{
+margin-top: 1rem;}
+select {
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+/* Hover effect */
+select:hover {
+  border-color: #4a90e2;
+}
+
+/* Focus effect */
+select:focus {
+  border-color: #3a7bd5;
+  box-shadow: 0 0 6px rgba(58, 123, 213, 0.4);
+}
+
+/* Make options look nice */
+select option {
+  padding: 10px;
+  font-size: 15px;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  select {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+.akhir{
+
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 3rem;
+}
+.gazi{
+  width: 15%;
+  padding: 1rem 0;
+}
+.motu{
+padding: 1rem 3rem;
+border-radius: 1rem;
 }
