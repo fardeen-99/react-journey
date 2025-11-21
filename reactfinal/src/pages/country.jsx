@@ -30,7 +30,7 @@ export const Country = () => {
 
   if (loading) {
     return (
-      <div style={{display:"flex",justifyContent:"center",marginTop:"40px"}}>
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"74vh",width:"100%"}}>
         <Atom color="#32cd32" size="medium" />
       </div>
     )
