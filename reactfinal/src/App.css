@@ -1,6 +1,6 @@
 *{
   margin: 0;padding: 0;box-sizing: border-box;
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 html,body{
   height: 100%;
@@ -301,6 +301,8 @@ justify-content: center;
   }
   .sec {
     flex-direction: column;
+    margin-top: 2rem;
+    /* margin-bottom: 0; */
   }
   .sec button,
   .lola {
@@ -435,4 +437,229 @@ select option {
 .motu{
 padding: 1rem 3rem;
 border-radius: 1rem;
+}
+@media (min-width: 1500px) {
+  .head, .cont, .cover, .container {
+    max-width: 1400px;
+  }
+}
+/* ========== Tablet (768px — 1024px) ========== */
+@media (max-width: 1024px) {
+
+  .cont {
+    grid-template-columns: 1fr;
+    text-align: center;
+    /* margin: 0;
+     */
+     /* padding: 0; */
+  }
+
+  .boxer {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .cover {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .akhir {
+    width: 90%;
+  }
+}
+/* ========== Mobile (max-width: 768px) ========== */
+@media (max-width: 768px) {
+
+  /* Navbar
+  .head {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+  } */
+
+ 
+
+  /* Hero Section */
+  .cont {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .first h1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .first p {
+    font-size: 14px;
+  }
+
+  button {
+    width: 60%;
+    margin: auto;
+  }
+
+  .sec img {
+    width: 90%;
+    margin: auto;
+  }
+
+  /* Three Card Section */
+  .boxer {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+
+  .card {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  /* Footer */
+  .f1 {
+    /* grid-template-columns: 1fr; */
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .boxx {
+    justify-content: center;
+    flex-direction: column;
+    font-size: .6rem;
+    gap: 4px;
+  }
+  .loc{
+    font-size: 1rem;
+  }
+  
+
+  /* FORM */
+  form {
+    width: 90%;
+  }
+
+  input, textarea {
+    font-size: 14px;
+  }
+
+  /* Country Grid */
+  .cover {
+    grid-template-columns: 1fr ;
+    gap: 2.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .olo {
+    width: 100%;
+    gap: 1.1rem;
+  }
+
+  .image {
+    width: 80%;
+    
+    margin: auto;
+  }
+
+  .btn-b {
+    width: 80%;
+  }
+
+  /* Single Country Page */
+  .container {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .pehla {
+    width: 90%;
+  }
+
+  .doora {
+    font-size: 14px;
+  }
+
+  /* Top Controls (search + sort + filter) */
+  .akhir {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem 0;
+  }
+
+  .motu {
+    width: 80%;
+  }
+
+  .gazi {
+    width: 80%;
+    text-transform: uppercase;
+  }
+
+  select {
+    width: 80%;
+    /* padding: 0;
+    font-size: smaller; */
+  }
+}
+.menu{
+  font-size: 2rem;
+  color: white;
+display: none;
+}
+@media (max-width:700px) {
+  
+  .menu{
+    display: block;
+  }
+  .head{
+    padding: 1rem 1.6rem;
+
+  }
+  ul{
+    flex-direction: column;
+    position: absolute;
+    top: 8vh;
+    left: -100%;
+    /* left: 0; */
+    width: 100%;
+padding: 2rem 0;    
+/* font-size: 3rem; */
+   background-color:#1a1a1a;
+   text-align: center;
+   font-weight: 700;
+  }
+  .first{
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .formm{
+    min-height: 83vh;
+  }
+  .akhir{
+    gap: 1.1rem;
+  }
+}
+.ajau{
+  left: 0;
+}
+.noni{
+  padding: .7rem 0;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: auto; */
+}
+/* FREEZE SCROLL WHEN MENU OPEN */
+body.menu-open {
+  overflow: hidden;
 }

@@ -43,10 +43,10 @@ const chalo= searchu && filteru
 
 console.log(country)
 if(isPending){
-    return(
-        <Atom color="#32cd32" size="medium" text="" textColor="" />
+   
+     return    <Atom color="#32cd32" size="medium" text="" textColor="" />
 
-    )
+    
 }
 let navu=useNavigate()
 

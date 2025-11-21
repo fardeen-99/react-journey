@@ -1,29 +1,51 @@
 import { NavLink } from "react-router-dom"
-export const Header=()=>{
+import { TiThMenuOutline } from "react-icons/ti";
+import { useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { IoMdMenu } from "react-icons/io";
 
+export const Header=()=>{
+const[open,setopen]=useState(false)
+
+
+
+
+useEffect(() => {
+  if (open) {
+    document.body.classList.add("menu-open");
+  } else {
+    document.body.classList.remove("menu-open");
+  }
+}, [open]);
 return(
     <>
+
+     
     <nav>
         <div className="head">
             <h1>MyAtlas</h1>
-            <ul>
+            <div className="menu"  onClick={()=>setopen(!open)}>{open?<IoClose />
+:<IoMdMenu />
+}
+</div>
+            <ul className={open?"ul ajau":""}>
                 <li>
     <NavLink className={({isActive})=>
-    isActive?"lol":""} to="/">home</NavLink>
+    isActive?"lol":""} to="/"   onClick={()=>setopen(false)}>home</NavLink>
                 </li>
                 <li>
     <NavLink className={({isActive})=>
-    isActive?"lol":""}to="/about">about</NavLink>
+    isActive?"lol":""}to="/about" onClick={()=>setopen(false)}>about</NavLink>
 
                 </li>
                 <li>
     <NavLink className={({isActive})=>
-    isActive?"lol":""}to="/country">country</NavLink>
+    isActive?"lol":""}to="/country" onClick={()=>setopen(false)}>country</NavLink>
 
                 </li>
                 <li>
     <NavLink className={({isActive})=>
-    isActive?"lol":""} to="/contact">contact</NavLink>
+    isActive?"lol":""} to="/contact" onClick={()=>setopen(false)}>contact</NavLink>
 
                 </li>
             </ul>
