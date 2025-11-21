@@ -672,3 +672,11 @@ a{
 .container{
   min-height: 76vh;
 }
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.formm,.about,main{
+  flex: 1;
+}
