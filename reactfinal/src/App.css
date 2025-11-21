@@ -577,6 +577,8 @@ border-radius: 1rem;
   .container {
     grid-template-columns: 1fr;
     padding: 2rem 1rem;
+            text-align: center;
+        border-radius: 2rem;
   }
 
   .pehla {
@@ -662,4 +664,10 @@ padding: 2rem 0;
 /* FREEZE SCROLL WHEN MENU OPEN */
 body.menu-open {
   overflow: hidden;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  min-height: 76vh;
 }

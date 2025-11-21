@@ -1,118 +1,107 @@
-import { useEffect, useState, useTransition } from "react"
+import { useEffect, useState } from "react"
 import { Getapi } from "../axios"
-import {Atom} from 'react-loading-indicators'
+import { Atom } from "react-loading-indicators"
+import { useNavigate } from "react-router-dom"
 
-import{NavLink, useNavigate}from"react-router-dom"
-export const Country=()=>{
-    const[country,setcountry]=useState([])
-    const[search,setsearch]=useState("")
-    const[filter,setfilter]=useState("All")
-  const [isPending, startTransition] = useTransition();
-  
-  const popat=async()=>{
-  
-      let res=await Getapi()
-      startTransition(() => {
-          setcountry(res.data);
-          console.log(country)
-        });
+export const Country = () => {
+  const [country, setcountry] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [search, setsearch] = useState("")
+  const [filter, setfilter] = useState("All")
+  const navu = useNavigate()
+
+  useEffect(() => {
+    const popat = async () => {
+      try {
+        const res = await Getapi()
+        setcountry(res.data)
+      } catch (err) {
+        console.error("API Error:", err)
+      } finally {
+        setLoading(false)
       }
-useEffect(()=>{
-    
-popat()
-    
-},[])
+    }
 
-const searchu=country.filter((item)=>{
-   return item.name.common.toLowerCase().includes(search.toLowerCase()
-)
+    popat()
+  }, [])
 
-})
+  if (loading) {
+    return (
+      <div style={{display:"flex",justifyContent:"center",marginTop:"40px"}}>
+        <Atom color="#32cd32" size="medium" />
+      </div>
+    )
+  }
 
-const filteru=searchu.filter((item)=>{
+  const searchu = country.filter((item) =>
+    item.name.common.toLowerCase().includes(search.toLowerCase())
+  )
 
-    if(filter==="All") return true
-     return item.region===filter
-})
+  const filteru = searchu.filter((item) =>
+    filter === "All" ? true : item.region === filter
+  )
 
-const chalo= searchu && filteru
+  const handlenum = (value) => {
+    setcountry((prev) =>
+      [...prev].sort((a, b) => {
+        if (value === "asc") return a.name.common.localeCompare(b.name.common)
+        if (value === "desc") return b.name.common.localeCompare(a.name.common)
+      })
+    )
+  }
 
-
-
-
-
-console.log(country)
-if(isPending){
-   
-     return    <Atom color="#32cd32" size="medium" text="" textColor="" />
-
-    
-}
-let navu=useNavigate()
-
-
-const handlenum=(value)=>{
-if(value==="asc"){
-setcountry((prev)=>[...prev].sort((a,b)=> a.name.common.localeCompare(b.name.common)))
-
-}else if(value==="desc"){
-    setcountry((prev)=>[...prev].sort((a,b)=>b.name.common.localeCompare(a.name.common)))
-
-}
-
-}
-
-return(
+  return (
     <>
+      <div className="akhir">
+        <input
+          className="motu"
+          type="text"
+          placeholder="search.."
+          value={search}
+          onChange={(e) => setsearch(e.target.value)}
+        />
 
+        <button className="gazi" onClick={() => handlenum("asc")}>
+          ascending
+        </button>
+        <button className="gazi" onClick={() => handlenum("desc")}>
+          descending
+        </button>
 
-<div className="akhir">
-    <input className="motu"type="text"
-    placeholder="search.."
-    name="search"
-    value={search}
-    onChange={(e)=>setsearch(()=>e.target.value)} />
-
-
-<button className="gazi"onClick={()=>handlenum("asc")}>ascending</button>
-<button onClick={()=>handlenum("desc")} className="gazi">descending</button>
-
-
-<select name="" id="" value={filter} onChange={(e)=>setfilter(()=>e.target.value)}>
-<option value="All">All</option>
+        <select value={filter} onChange={(e) => setfilter(e.target.value)}>
+          <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option></select>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
 
-</div>
+      <div className="cover">
+        {filteru.map((ele, index) => (
+          <div className="olo" key={index}>
+            <div className="image">
+              <img src={ele.flags.svg} alt="" />
+            </div>
+            <h2 style={{ textTransform: "uppercase", color: "wheat" }}>
+              {ele.name.common.length > 10
+                ? ele.name.common.slice(0, 10) + "..."
+                : ele.name.common}
+            </h2>
+            <p>population: {ele.population.toLocaleString()}</p>
+            <p>region: {ele.region}</p>
+            <p>capital: {ele.capital}</p>
 
-
-    <div className="cover">
-    
-        {
-            chalo.map((ele,index)=>{
-return(
-<div className="olo" key={index}>
-    <div className="image"><img src={ele.flags.svg} alt="" /></div>
-    <h2 style={{textTransform:"uppercase", color:"wheat"}}>{ele.name.common.length > 10 ?
-    ele.name.common.slice(0,10) +"..."
-    :
-    ele.name.common}</h2>
-    <p>population:{ele.population.toLocaleString()}</p>
-    <p>region:{ele.region}</p>
-    <p>capital:{ele.capital}</p>
-
-<button className="btn-b"  onClick={()=>navu(`/country/${ele.name.common}`)}>read more</button>
-
-</div>
-)
-            })
-        }
-        
-    </div>
+            <button
+              className="btn-b"
+              onClick={() => navu(`/country/${ele.name.common}`)}
+            >
+              read more
+            </button>
+          </div>
+        ))}
+      </div>
     </>
-)
-
+  )
 }
