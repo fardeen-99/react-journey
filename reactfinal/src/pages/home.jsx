@@ -14,7 +14,7 @@ return(
            <NavLink to="/country"> <button className="noni">start exploring<FaArrowRightLong style={{color:"white",marginTop:"5px"}} />
 </button></NavLink>
         </div>
-        <div className="sec"><img src="https://github.com/thapatechnical/thapa-react-19-website/blob/master/react_country_thapa/public/images/world.png?raw=true" alt="atlas" /></div>
+        <div className="sec"><img src="atlas.png" alt="worldAtlas" /></div>
         </div>
 
         <About/>
