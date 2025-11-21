@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Getapi } from "../axios"
+// import { Getapi } from "../axios"
 import { Atom } from "react-loading-indicators"
 import { useNavigate } from "react-router-dom"
+import { getCountryData } from "../axios"
 
 export const Country = () => {
   const [country, setcountry] = useState([])
@@ -13,7 +14,9 @@ export const Country = () => {
   useEffect(() => {
     const popat = async () => {
       try {
-        const res = await Getapi()
+        const res = await getCountryData();
+        console.log("api data:"+res.data);
+        
         setcountry(res.data)
       } catch (err) {
         console.error("API Error:", err)
@@ -79,8 +82,8 @@ export const Country = () => {
       </div>
 
       <div className="cover">
-        {filteru.map((ele, index) => (
-          <div className="olo" key={index}>
+        {filteru.map((ele) => (
+          <div className="olo" key={ele.name.common}>
             <div className="image">
               <img src={ele.flags.svg} alt="" />
             </div>
@@ -91,7 +94,7 @@ export const Country = () => {
             </h2>
             <p>population: {ele.population.toLocaleString()}</p>
             <p>region: {ele.region}</p>
-            <p>capital: {ele.capital}</p>
+            <p>capital: {ele.capital?.[0] || "na"}</p>
 
             <button
               className="btn-b"

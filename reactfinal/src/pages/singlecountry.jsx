@@ -9,7 +9,8 @@ export const Singlecountry=()=>{
     const [single,setsingle]=useState()
 let params=useParams()
 console.log(params);
-const[ispending,setTransition]=useTransition()
+// const[ispending,setTransition]=useTransition()
+const[loading,setLoading]=useState(true)
 
 
 
@@ -18,15 +19,16 @@ const banao=async()=>{
     let res=await getCountryIndData(params.id)
     console.log(res.data);
     setsingle(res.data[0])
-    setTransition(()=>single)
-
+      setLoading(false)
 }
 useEffect(()=>{
 banao()
 },[])
-if(ispending){
+if(loading){
     return(
-        <Atom color="#32cd32" size="medium" text="" textColor="" />
+      <div style={{display:"flex",justifyContent:"center",marginTop:"40px"}}>
+        <Atom color="#32cd32" size="medium" />
+      </div>
     )
 }
 
