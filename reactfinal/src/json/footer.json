@@ -7,15 +7,16 @@
   },
   {
     "id": 2,
-    "label": "Phone",
-    "value": "+91 9810011454",
-    "icon": "FaPhoneAlt"
-  },
-  {
-    "id": 3,
     "label": "Email",
     "value": "fardeenkhan63574@gmail.com",
     "icon": "MdEmail"
+  },
+  {
+    "id": 3,
+    "label": "Phone",
+    "value": "+91 9810011454",
+    "icon": "FaPhoneAlt"
   }
+  
   
 ]
