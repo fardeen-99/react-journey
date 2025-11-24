@@ -531,7 +531,6 @@ border-radius: 1rem;
     text-align: center;
     padding: 1rem;
   }
-
   .boxx {
     justify-content: center;
     flex-direction: column;
@@ -679,4 +678,25 @@ a{
 }
 .formm,.about,main{
   flex: 1;
+}
+.pagg{
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  width: 40%;
+  margin: 0 auto 3rem auto;
+
+}
+.pagg button{
+  width: 25%;
+}
+@media (max-width:1000px) {
+  .pagg{
+    width: 100%;
+  }
+}
+.haji{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -9,11 +9,11 @@ export const Country = () => {
   const [loading, setLoading] = useState(true)
   const [search, setsearch] = useState("")
   const [filter, setfilter] = useState("All")
+  const[page,setpage]=useState(1)
   const navu = useNavigate()
 
-  useEffect(() => {
-    const popat = async () => {
-      try {
+  const popat = async () => {
+    try {
         const res = await getCountryData();
         console.log("api data:"+res.data);
         
@@ -24,7 +24,8 @@ export const Country = () => {
         setLoading(false)
       }
     }
-
+    
+    useEffect(() => {
     popat()
   }, [])
 
@@ -53,6 +54,17 @@ export const Country = () => {
     )
   }
 
+
+// pagination
+const limit=8
+
+let start=(page-1)*limit
+let end=start+ limit
+
+let finalverdict=filteru.slice(start,end)
+
+let finalval=Math.ceil(filteru.length/limit)
+
   return (
     <>
       <div className="akhir">
@@ -61,7 +73,10 @@ export const Country = () => {
           type="text"
           placeholder="search.."
           value={search}
-          onChange={(e) => setsearch(e.target.value)}
+          onChange={(e) => {setsearch(e.target.value)
+            setpage(1)
+          }}
+          
         />
 
         <button className="gazi" onClick={() => handlenum("asc")}>
@@ -71,7 +86,9 @@ export const Country = () => {
           descending
         </button>
 
-        <select value={filter} onChange={(e) => setfilter(e.target.value)}>
+        <select value={filter} onChange={(e) => {setfilter(e.target.value)
+          setpage(1)
+        }}>
           <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
@@ -82,7 +99,7 @@ export const Country = () => {
       </div>
 
       <div className="cover">
-        {filteru.map((ele) => (
+        {finalverdict.map((ele) => (
           <div className="olo" key={ele.name.common}>
             <div className="image">
               <img src={ele.flags.svg} alt="" />
@@ -105,6 +122,31 @@ export const Country = () => {
           </div>
         ))}
       </div>
+      <div className="pagg">
+              <button 
+              disabled={page===1}
+              onClick={()=>setpage((prev)=>prev-1)}>prev</button>
+      <p>{page}/{finalval}</p>
+      <button 
+      disabled={page===finalval}
+      onClick={()=>setpage((prev)=>prev+1)}>add</button>
+      </div>
+
+{/* {
+  [...Array(finalval)].map((_,i)=>{
+    const pagejahapohchnahai=i+1
+    return(
+      <div className="haji">
+    <button key={i}
+    onClick={()=>setpage(pagejahapohchnahai)}
+    >
+{pagejahapohchnahai}
+    </button>
+    </div>
+    )
+})
+} */}
     </>
   )
 }
+
