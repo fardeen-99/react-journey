@@ -14,7 +14,7 @@ return(
            <NavLink to="/country"> <button className="noni">start exploring<FaArrowRightLong style={{color:"white",marginTop:"5px"}} />
 </button></NavLink>
         </div>
-        <div className="sec"><img src="/photo/atlas.png" alt="worldAtlas" /></div>
+        <div className="sec"><img src="https://reactjsproj.netlify.app/images/world.png" alt="worldAtlas" /></div>
         </div>
 
         <About/>

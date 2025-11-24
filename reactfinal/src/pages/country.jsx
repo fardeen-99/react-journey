@@ -125,11 +125,11 @@ let finalval=Math.ceil(filteru.length/limit)
       <div className="pagg">
               <button 
               disabled={page===1}
-              onClick={()=>setpage((prev)=>prev-1)}>prev</button>
+              onClick={()=>setpage((prev)=>prev-1)}>PREV</button>
       <p>{page}/{finalval}</p>
       <button 
       disabled={page===finalval}
-      onClick={()=>setpage((prev)=>prev+1)}>add</button>
+      onClick={()=>setpage((prev)=>prev+1)}>NEXT</button>
       </div>
 
 {/* {
