@@ -122,7 +122,7 @@ let finalval=Math.ceil(filteru.length/limit)
           </div>
         ))}
       </div>
-      <div className="pagg">
+      {/* <div className="pagg">
               <button 
               disabled={page===1}
               onClick={()=>setpage((prev)=>prev-1)}>PREV</button>
@@ -130,22 +130,23 @@ let finalval=Math.ceil(filteru.length/limit)
       <button 
       disabled={page===finalval}
       onClick={()=>setpage((prev)=>prev+1)}>NEXT</button>
-      </div>
+      </div> */}
 
-{/* {
+<div className="haji">
+{
   [...Array(finalval)].map((_,i)=>{
     const pagejahapohchnahai=i+1
     return(
-      <div className="haji">
     <button key={i}
     onClick={()=>setpage(pagejahapohchnahai)}
+    className={page===pagejahapohchnahai?"activee":""}
     >
 {pagejahapohchnahai}
     </button>
-    </div>
     )
-})
-} */}
+  })
+}
+  </div>
     </>
   )
 }

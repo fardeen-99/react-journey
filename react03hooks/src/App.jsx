@@ -22,6 +22,8 @@ let char= Math.floor(Math.random()*str.length +1)
 pass += str.charAt(char)
   
 }
+
+
 setpassword(pass)
 } , [length,noallow])
 

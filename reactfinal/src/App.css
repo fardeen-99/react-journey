@@ -695,8 +695,33 @@ a{
     width: 100%;
   }
 }
-.haji{
-  width: 100%;
+.haji {
   display: flex;
+  justify-content: center;
+  margin: 20px 0;
   flex-wrap: wrap;
+  gap: 10px;
+}
+.haji button{
+  width: 0;
+   padding: 8px 15px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.haji button:hover {
+  background: #444;
+}
+
+.haji button:active {
+  background: #32cd32;
+  font-weight: bold;
+  transform: scale(1.1);
+}
+.haji .activee{
+  background-color: #32cd32;
 }
