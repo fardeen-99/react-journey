@@ -7,6 +7,7 @@ const App=()=>{
 
   const[question,setquestion]=useState("")
   const[ans,setans]=useState([])
+  const[save,setsave]=useState([])
   let asking=async()=>{
  if(question==="")return
 
@@ -16,8 +17,16 @@ const App=()=>{
     { role: "user", content: question }
   ]
 };
-  
-    
+  if(localStorage.getItem("saver")){
+    let history=JSON.parse(localStorage.getItem("saver"))
+history=[...history,question]
+localStorage.setitem("saver",JSON.stringify(history))
+setsave(history)
+  }else{
+    localStorage.setItem("saver",JSON.stringify([question]))
+setsave(question)
+  }
+  console.log(save)
     
         try {
           const res = await Api.post("/chat/completions", payload);
