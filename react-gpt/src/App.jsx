@@ -4,11 +4,15 @@ import "./App.css"
 import { Commet } from "react-loading-indicators"
 import { Api } from "./axios"
 import { Answer } from "./answer"
-import { IoSunnyOutline } from "react-icons/io5";
+import { HiStar } from "react-icons/hi";
+import { ImCross } from "react-icons/im";
+
+
+
 
 const App=()=>{
 
-
+const[open,setopen]=useState(false)
   const[question,setquestion]=useState("")
   const[option,setoption]=useState("dark")
   const[ans,setans]=useState([])
@@ -54,6 +58,8 @@ if(question){
 }
 
   // console.log(save)
+
+
     
         try {
           const res = await Api.post("/chat/completions",payload);
@@ -64,6 +70,7 @@ let points = datastring.split(/\n+|• |- |\* |\\s+/);
           points=points.map((item)=>item.trim())
           // setans(points)
           setans((prev)=>[...prev,{type:"q",text:custom?custom:question},{type:"a",text:points}])        
+ 
           setload(false)
         } catch (err) {
           console.log(err.response?.data || err);
@@ -106,13 +113,17 @@ localStorage.clear()
 }
 
 
-let lighter=question==="light"
-
+const menu=()=>{
+  setopen((prev)=>!prev)
+}
 return(
   <>
- <main className={option==="light"?"lightsection":''}>
-  <aside className={option==="light"?"lightaside":''}>
-    <h2 style={{textAlign:"center",fontWeight:600}}>Recent History <MdDelete onClick={deleteall} />
+ <main className={option}>
+  <aside  className={` ${open?"kannu":""} ${option==="light"?"lightaside":''}`}>
+    <h2 style={{textAlign:"center",fontWeight:600}}>Recent History <MdDelete onClick={deleteall} className="bigdlt" />
+    <ImCross className={`cross ${option}-cross`} onClick={()=>setopen(false)} />
+
+
 
 </h2>
 <ul className="history">
@@ -120,7 +131,7 @@ return(
   {save.map((ele,index)=>{
     return(
         
-<li className={option==="light"?"lightu":""} key={index}><p onClick={()=>choose(ele)}  className="trunc">{ele}</p><span className="dlt" onClick={()=>dlt(index)}><MdDeleteOutline /></span>
+<li className={option==="light"?"lightu":""} key={index}><p onClick={()=>{choose(ele);setopen(false)}}  className="trunc">{ele}</p><span className="dlt" onClick={()=>dlt(index)}><MdDeleteOutline onClick={()=>setopen(true)} /></span>
 
 </li>
       
@@ -135,7 +146,9 @@ return(
 </select>
   </aside>
   <section className={option==="light"?"lightsection":''}>
-    <nav><h1 className="heading">welcome to fardeen's Ai</h1></nav>
+    <nav><h1 className="heading">welcome to fardeen's Ai 
+</h1> <p onClick={menu} ><HiStar style={{color:"white",fontSize:"1.5rem"}} /> <br />history</p>
+</nav>
 { load?<div className="spinner"><Commet color="#b61e9f" size="small" text="" textColor="" /></div>:<></>
 }
 
@@ -163,7 +176,7 @@ return(
     </ul>
 
     </article>
-<div className={`inp ${option==="light"?"sinp":""}`}><input  className={`${option==="light"?"lightli":""}`}  onKeyDown={key} type="text"  value={question} onChange={(e)=>setquestion(e.target.value)}  placeholder="Ask Something..." /><p onClick={asking} >ASK</p></div>
+<div className={`inp ${option==="light"?"sinp":""}`}><input  className={`${option==="light"?"lightli":""}`}  onKeyDown={key} type="text"  value={question} onChange={(e)=>setquestion(e.target.value)}  placeholder="Ask Something..." /><p className={`${option}-ask`} onClick={asking} >ASK</p></div>
   </section>
   </main> 
   </>

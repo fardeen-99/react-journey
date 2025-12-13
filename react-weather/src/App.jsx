@@ -17,20 +17,36 @@ let change=["https://png.pngtree.com/thumb_back/fh260/background/20230113/pngtre
     
     const changer=()=>{
   let arr=Math.floor(Math.random()*change.length)
+  if(back===change(arr)){
+    setback(change[1])
+  }
   setback(change[arr])
+  console.log(back);
+  
+}
+
+async function abhi(newcity){
+  let api = `https://api.openweathermap.org/data/2.5/weather?q=${newcity?newcity:city}&appid=cf0f705f7511097aacae70722e7ff9ff&units=metric`;
+  try {
+      let res = await fetch(api);
+      let data = await res.json();
+
+      if(!res.ok){
+        throw new Error("city name not exist")
+      }
+      setWeather(data);
+    
+  } catch (error) {
+    console.log(error);
+    setWeather((prev)=>prev)
+    
+  }
 }
     // MAIN API (works only when city is valid)
-  let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cf0f705f7511097aacae70722e7ff9ff&units=metric`;
-
-  const fetchWeather = async () => {
-    let res = await fetch(api);
-    let data = await res.json();
-    setWeather(data);
-  };
 
   useEffect(() => {
-    fetchWeather();
-  }, [city]);
+    abhi();
+  }, []);
 
   // 🔥 SUBMIT — first validate without updating UI
   const submit = async (e) => {
@@ -40,22 +56,12 @@ let change=["https://png.pngtree.com/thumb_back/fh260/background/20230113/pngtre
 
     if (!newCity.trim()) return;
 
+    abhi(newCity)
     // VALIDATION API
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${newCity}&appid=cf0f705f7511097aacae70722e7ff9ff&units=metric`;
-
-    let res = await fetch(url);
-    let data = await res.json();
-
-    // ❌ GALAT CITY → UI SAME RAHEGI
-    if (data.cod === "404") {
-      setError("City does not exist ❌");
-      setInput("");
-      return; // IMPORTANT → city state change NA ho
-    }
+    
 
     // ✔ SAHI CITY → UI update ho
     setError("");
-    setCity(newCity);
     setInput("");
   };
 useEffect(() => {

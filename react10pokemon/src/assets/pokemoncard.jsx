@@ -13,7 +13,7 @@ return(
               alt={ele.name}
             />
           </div>
-
+        
           <h2 className="heading">{ele.name}</h2>
 
           <div className="type">{ele.types.map((e) => e.type.name).join(", ")}</div>

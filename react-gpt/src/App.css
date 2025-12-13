@@ -12,17 +12,20 @@ main{
   width: 100%;
   display: grid ;
   grid-template-columns: 1fr 4fr;
+  position: relative;
 }
+
 aside{
   background-color:rgb(30, 32, 32);
   /* width: 20%; */
   max-width: 250px;
   height: 100%;
   position: relative;
+  transition: all 0.3s linear;
   /* overflow-y: hidden; */
 }
 section{
-  height: 100vh;
+  height: 100%;
   width: 100%;
  padding: 1rem 0;
   background-color: black;
@@ -32,8 +35,14 @@ section{
 }
 nav{
   /* padding: 1rem; */
-  text-align: center;
+  /* text-align: center; */
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav>p{
+display: none;
 }
 .inp{
   color: white;
@@ -65,7 +74,7 @@ flex: 1;
 color: white;
 padding: 1rem;
 overflow-y:scroll ;
-/* max-height: 80vh; */
+max-height: 74vh;
 }
 article::-webkit-scrollbar {
   display: none;
@@ -78,7 +87,12 @@ ul {
   gap: 1rem;
   /* width: 100%; */
 }
-
+.cross{
+  /* color: #5A0E24; */
+  color: #1f1f1f;
+  display: none;
+  /* font-weight: 800; */
+}
 .mainul li {
   max-width: 70%;
   padding: 1rem 1.4rem;
@@ -119,6 +133,11 @@ ul {
   align-self: start;
   gap: 0.6rem;
   /* width: 70%; */
+}
+.bigdlt{
+  &:hover{
+    color:red;
+  }
 }
 .ansul li{
 padding: 0px 30px;
@@ -246,4 +265,82 @@ select{
 .sinp{
   border: 2px solid #628141;
   
+}
+@media (max-width:600px) {
+  main{
+    grid-template-columns: 1fr ;
+    
+  }
+aside{
+  position: absolute;
+  /* left: -100px; */
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  top: -100%;
+  /* left: 10; */
+  /* left: -150px; */
+  /* font-size: .6rem; */
+  
+  min-width: 100%;
+  z-index: 1000;
+
+  /* &:hover{
+    max-width: 150px;
+
+  } */
+}
+.ansul>li{
+  padding: 0 10px;
+}
+.inp{
+  width: 85%;
+}
+aside h2{
+  border-bottom: 1px solid wheat;
+  padding-bottom: .4rem;
+  /* font-size: 1rem; */
+  /* gap: 10px; */
+  /* flex-direction: column; */
+  /* font-weight: 300; */
+}
+.history li{
+  font-weight: 400;
+  /* padding: 0.2rem 0rem;
+  padding-left: 3px; */
+}
+.heading{
+  /* padding: 1rem; */
+  font-size: 30px;
+  /* text-align: start; */
+}
+nav{
+  
+  justify-content: space-around;
+}
+nav>P{
+  /* font-size: 1rem; */
+  font-size: .5rem;
+gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.kannu{
+  top: 0;
+}
+.cross{
+  color: purple;
+  display: block;
+}
+.light-cross{
+  color: #628141;
+}
+}
+.light{
+  background-color:#EFE4D2;
+}
+.light-ask{
+  color: #1f1f1f;
+  /* font-weight: 700; */
 }
