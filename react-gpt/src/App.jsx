@@ -176,7 +176,7 @@ return(
     </ul>
 
     </article>
-<div className={`inp ${option==="light"?"sinp":""}`}><input  className={`${option==="light"?"lightli":""}`}  onKeyDown={key} type="text"  value={question} onChange={(e)=>setquestion(e.target.value)}  placeholder="Ask Something..." /><p className={`${option}-ask`} onClick={asking} >ASK</p></div>
+<div className={`inp ${option==="light"?"sinp":""}`}><input  className={`${option==="light"?"lightli":""}`}  onKeyDown={key} type="text"  value={question} onChange={(e)=>setquestion(e.target.value)}  placeholder="Ask Something..." /><p className={`${option}-ask`} onClick={()=>asking()} >ASK</p></div>
   </section>
   </main> 
   </>
