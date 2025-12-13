@@ -37,7 +37,6 @@ section{
 nav{
   /* padding: 1rem; */
   /* text-align: center; */
-  
   color: white;
   display: flex;
   align-items: center;
@@ -273,6 +272,9 @@ select{
     grid-template-columns: 1fr ;
     
   }
+  .mainul>.ansul>.answer{
+max-width: 100%;
+  }
 aside{
   position: absolute;
   /* left: -100px; */
@@ -316,6 +318,7 @@ aside h2{
   /* text-align: start; */
 }
 nav{
+  padding-top: .5rem;
   
   justify-content: space-around;
 }

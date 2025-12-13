@@ -14,7 +14,7 @@ const App=()=>{
 
 const[open,setopen]=useState(false)
   const[question,setquestion]=useState("")
-  const[option,setoption]=useState("dark")
+  const[option,setoption]=useState(JSON.parse(localStorage.getItem("mode"))||"dark")
   const[ans,setans]=useState([])
   const[save,setsave]=useState(JSON.parse(localStorage.getItem("saver"))||[])
   const[load,setload]=useState(false)
@@ -116,6 +116,9 @@ localStorage.clear()
 const menu=()=>{
   setopen((prev)=>!prev)
 }
+useEffect(()=>{
+  localStorage.setItem("mode",JSON.stringify(option))
+},[option])
 return(
   <>
  <main className={option}>
@@ -160,10 +163,10 @@ return(
         {ans.map((ans,index)=>{
           return(
             
-            ans.type==="q"?<li ref={bottomRef} className={`qusetion ${option==="light"?"lightquestion":""}`} key={index+Math.random()}><Answer ele={ans.text} index={index} total={1}/></li>:<ul className="ansul"> {ans.text.map((item)=>{
+            ans.type==="q"?<li ref={bottomRef} className={`qusetion ${option==="light"?"lightquestion":""}`} key={index}><Answer ele={ans.text} index={index} total={1}/></li>:<ul className="ansul"> {ans.text.map((item)=>{
               return(
                 
-               <li className={`answer ${option==="light"?"lightli":""}`}  key={index+Math.random()  }><Answer ele={item} index={index} total={ans.text.length} option={option} /></li>
+               <li className={`answer ${option==="light"?"lightli":""}`}  key={index}><Answer ele={item} index={index} total={ans.text.length} option={option} /></li>
               )
             }
             ) }
