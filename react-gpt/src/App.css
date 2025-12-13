@@ -133,7 +133,7 @@ ul {
   flex-direction: column;
   align-self: start;
   gap: 0.6rem;
-  /* width: 70%; */
+  width: 100%;
 }
 .bigdlt{
   &:hover{
