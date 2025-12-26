@@ -22,7 +22,7 @@ const App = () => {
 
 </main>
 <section className='h-[100vh] w-[90vw] m-auto bg-amber-100 grid grid-cols-4 gap-4 grid-rows-3'>
-<div className=" bg-red-400"></div>
+<div className=" bg-red-400 active:scale-95 "></div>
 <div className=" bg-red-400"></div>
 <div className=" bg-red-400"></div>
 <div className=" bg-red-400"></div>
