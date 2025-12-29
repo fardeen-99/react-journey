@@ -34,7 +34,6 @@ const App = () => {
 <div className=" bg-red-400"></div>
 <div className=" bg-red-400"></div>
 <div className=" bg-red-400"></div>
-<div className=" bg-red-400"></div>
 
 </section>
 
