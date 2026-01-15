@@ -2,4 +2,9 @@
 
 #bottom{
     background: linear-gradient(transparent,black);
+    
+}
+body{
+    background-color: oklch(21% 0.034 264.665) 
+
 }

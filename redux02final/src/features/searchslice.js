@@ -30,7 +30,10 @@ const searchSlice = createSlice({
         },
         clearResults(state) {
             state.results = []
-        }
+        },
+        addResults(state, action) {
+  state.results = [...state.results, ...action.payload];
+}
     }
 })
 
@@ -41,7 +44,8 @@ export const {
     setError,
     setLoading,
     setResults,
-    clearResults
+    clearResults,
+    addResults
 } = searchSlice.actions
 
 

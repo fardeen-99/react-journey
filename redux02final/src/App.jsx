@@ -1,20 +1,40 @@
-import { useEffect } from "react"
-import { unsplash } from "./api/api"
-import Search from "./components/search"
+
+
 import { useSelector } from "react-redux"
-import Tab from "./components/tab"
-import Result from "./components/Result"
+import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import { Home } from "./components/Home"
+import Applayout from "./components/Applayout"
+import Collection from "./components/Collection"
 
 const App = () => {
 let abbu=useSelector((store)=>store.content)
 console.log(abbu);
+const router=createBrowserRouter([
+  {
+  path:"/",
+  element:<Applayout/>,
+  children:[
+    {
+      path:"/",
+      element:<Home/>
+    },
+    {
+      path:"/collection",
+      element:<Collection />
+    }
+  ]
+
+  }
+])
+
+
+
+
 
   return (
-    <div className='min-h-screen w-full bg-gray-900 flex flex-col'>
-  <Search />
-  <Tab/>
-<Result/>
-    </div>
+    <>
+   <RouterProvider router={router}/>
+    </>
   )
 }
 
