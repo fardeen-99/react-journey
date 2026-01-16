@@ -2,27 +2,53 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { FaXmark } from "react-icons/fa6";
-
+import toast,{Toaster} from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { removecollection } from '../features/collectionslice';
 const Collection = () => {
 
-const[data,setdata]=useState(JSON.parse(localStorage.getItem("collection"))||[])
+// const[data,setdata]=useState(JSON.parse(localStorage.getItem("collection"))||[])
+const output=useSelector(store=>store.collect.value)
 
-
-console.log(data);
+const dispatch=useDispatch()
 
 const deleter=(item)=>{
-    setdata((prev)=>prev.filter(task=>task.id!==item.id))
+  toast.success('removed', {
+  style: {
+    border: '1px solid #713200',
+    padding: '16px',
+    color: '#713200',
+  },
+  iconTheme: {
+    primary: '#713200',
+    secondary: '#FFFAEE',
+  },
+});
+    dispatch(removecollection(item))
 }
 
-useEffect(()=>{
-localStorage.setItem("collection",JSON.stringify(data))
-},[data])
+// useEffect(()=>{
+// localStorage.setItem("collection",JSON.stringify(data))
+// },[data])
 
   return (
     <>
-    <div className=' grid gap-6 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] p-6 w-[100%]'>
+    <Toaster
+  position="top-right"
+  reverseOrder={true}
+/>
+<div
+  className="
+    grid gap-6 p-6 w-full
+    grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-3
+    lg:grid-cols-4
+    xl:grid-cols-5
+  "
+>
 
-    {data.map((item,index)=>{
+    {output && output.map((item,index)=>{
         return(
         
       <div className='h-[250px] w-[100%]  rounded overflow-hidden relative self-start' key={index}>

@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { fetchGIF, fetchVideos, unsplash } from '../api/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { setError, setLoading, setResults } from '../features/searchslice'
 import { FcLike } from "react-icons/fc";
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { addcollection } from '../features/collectionslice';
+import { useQuery } from '@tanstack/react-query';
+import {Atom} from 'react-loading-indicators' 
 
-const Result = () => {
+const Result = ({tabref}) => {
 
   const[page,setpage]=useState(1)
   const [video, setvideo] = useState(1)
 let dispatch=useDispatch()
-const{ query,error,activeTab,loading,results }=useSelector((store)=>store.content)
+const{ query,activeTab }=useSelector((store)=>store.content)
 
 // console.log(query);
 const paginationINC=()=>{
@@ -33,7 +37,7 @@ if(activeTab==="photos"){
 }if(activeTab==="videos"){
   if(video>1){
 
-    setvideo(video+1)
+    setvideo(video-1)
   }
 }
 
@@ -42,27 +46,15 @@ if(activeTab==="photos"){
 
 
 const addtocollexction=(item)=>{
- 
-const olddata=JSON.parse(localStorage.getItem("collection")) || []
-let finder=olddata.find((text)=>text.id === item.id
-)
-if(!finder){
-  const newdata=[...olddata,item]
-
-  localStorage.setItem("collection",JSON.stringify(newdata))
+toast.success('Successfully toasted!')
+dispatch(addcollection(item))
 }
-
-}
-
-useEffect(()=>{
-
-    
     const getdata=async()=>{
         if(!query) return
         
         try {
             let data=[]
-            dispatch(setLoading(true))
+      
 
 if (activeTab === "photos") {
   const res = await unsplash(query,30,page);
@@ -99,30 +91,58 @@ if (activeTab === "photos") {
   }));
 }
 
-dispatch(setResults(data));
+return data
 
     
 } catch (error) {
-  dispatch(setError(error.message || "something went wrong..."))   
-}finally{
-    dispatch(setLoading(false))
-
+  throw error
 }
 
     }
 
-getdata()
-},[query,dispatch,activeTab,page,video])
 
-console.log(results.photo)
+const {
+  data: results = [],
+  isLoading,
+  isError,
+  error
+} =useQuery({
+  queryKey:["search",{query,activeTab,page,video}],
+  queryFn:getdata,
+  enabled:!!query,
+  staleTime:Infinity,
+  gcTime:Infinity
 
-if(loading) return <h1 className='text-center 5xl font-bold'>loading....</h1>
-if(error) return <h1 className='text-center 5xl font-bold'>{error}</h1>
+})
+
+useEffect(()=>{
+ tabref.current?.scrollIntoView({ behavior: "smooth" });
+},[video,page])
+
+
+if(isLoading) return <div className='h-[50dvh] w-full flex items-center justify-center'><Atom color="#32cd32" size="medium" text="" textColor=""  /></div>
+if(isError) return <h1 className='text-center 5xl font-bold'>{error}</h1>
 
 if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold flex items-center justify-center text-white uppercase'>not found</h1>
   return (
       <>
-    <div className=' grid gap-6 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] p-6 w-full'>
+      <div><Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
+
+</div>
+<div
+
+  className="
+    grid gap-6 p-6 w-full
+    grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-3
+    lg:grid-cols-4
+    xl:grid-cols-5
+  "
+>
 
 
 
@@ -145,7 +165,10 @@ if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold 
 
 <h2 className=' font-semibold capitalize overflow-hidden flex items-center h-14  hover:h-full transition ease-linear duration-300  text-white ' >{item.title}</h2>
 
-<button className='px-4 py-2 border-none rounded  self-center text-2xl' onClick={()=>addtocollexction(item)}><FcLike /></button>
+<button className='px-4 py-2 border-none rounded  self-center text-2xl' onClick={() => {
+  addtocollexction(item)
+
+}}><FcLike /></button>
 </div>
 
 </div>
@@ -162,13 +185,13 @@ if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold 
 
 </div>{ activeTab !== "gif"&&
 
-<div className="flex items-center justify-center gap-6 p-7 w-full">
+<div className="flex gap-6 p-7 w-[80%] m-auto">
   <button
     onClick={paginationDEC}
     
     className="
       px-5 py-2 rounded-lg font-semibold
-      bg-blue-600 text-white
+      bg-blue-600 text-white w-[100%]
       hover:bg-blue-500
       disabled:opacity-40 disabled:cursor-not-allowed
       transition-all duration-200
@@ -177,13 +200,13 @@ if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold 
     Prev
   </button>
 
-  <span className="text-xl font-bold text-white">
+  <span className="text-2xl font-bold text-white">
  {activeTab==="photos"?page:video}
   </span>
 
   <button
     onClick={paginationINC}
-    className="
+    className=" w-[100%]
       px-5 py-2 rounded-lg font-semibold
       bg-blue-600 text-white
       hover:bg-blue-500
