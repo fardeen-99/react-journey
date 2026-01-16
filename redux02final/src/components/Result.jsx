@@ -121,8 +121,12 @@ useEffect(()=>{
 
 
 if(isLoading) return <div className='h-[50dvh] w-full flex items-center justify-center'><Atom color="#32cd32" size="medium" text="" textColor=""  /></div>
-if(isError) return <h1 className='text-center 5xl font-bold'>{error}</h1>
-
+if (isError)
+  return (
+    <h1 className="text-center text-2xl font-bold text-red-500">
+      {error?.message || "Something went wrong"}
+    </h1>
+  );
 if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold flex items-center justify-center text-white uppercase'>not found</h1>
   return (
       <>
