@@ -1,16 +1,17 @@
 import React, { useEffect} from 'react'
 import { fetchGIF, fetchVideos, unsplash } from '../api/api'
 import { useDispatch, useSelector } from 'react-redux'
-import { setError, setLoading, setResults } from '../features/searchslice'
+import { setActiveTabs, setError, setLoading, setResults } from '../features/searchslice'
 import { FcLike } from "react-icons/fc";
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { addcollection } from '../features/collectionslice';
 import { useQuery } from '@tanstack/react-query';
 import {Atom} from 'react-loading-indicators' 
+import { useNavigate } from 'react-router-dom';
 
 const Result = ({tabref}) => {
-
+const navu=useNavigate()
   const[page,setpage]=useState(1)
   const [video, setvideo] = useState(1)
 let dispatch=useDispatch()
@@ -127,7 +128,17 @@ if (isError)
       {error?.message || "Something went wrong"}
     </h1>
   );
-if(results.length===0) return <h1 className='h-[50vh] w-full text-5xl font-bold flex items-center justify-center text-white uppercase'>not found</h1>
+if(results.length===0) return(
+  <>
+   <h1 className='h-[50vh] break-all p-6 w-full text-lg font-bold flex items-center justify-center text-white capitalize'>not found : {query}</h1>
+   <div className='flex w-full gap-6 justify-center'>
+<button className='px-6 py-3 bg-emerald-900 capitalize rounded text-white font-semibold' onClick={()=>navu(dispatch(setActiveTabs("videos")))}>go to videos</button>
+<button className='px-6 py-3 bg-emerald-900 capitalize rounded text-white font-semibold' onClick={()=>navu(dispatch(setActiveTabs("gif")))}>go to gif</button>
+
+   </div>
+  </>
+
+)
   return (
       <>
       <div><Toaster

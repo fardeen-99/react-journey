@@ -31,7 +31,7 @@ const submithandler=(e)=>{
 >
   <input
     type="text"
-    placeholder="Search photos, videos, gifs..."
+    placeholder="Search..."
     value={text}
     onChange={(e)=>settext(e.target.value)}
     className="
