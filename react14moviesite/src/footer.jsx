@@ -18,8 +18,8 @@ e.preventDefault()
       <div className="footer-inner">
         <div className="footer-brand">
           <a className="brand-link" href="/" aria-label="Homepage">
-            <div className="brand-logo" aria-hidden="true">🟦</div>
-            <span className="brand-name">YourSite</span>
+            <div className="brand-logo" aria-hidden="true">🦇</div>
+            <span className="brand-name">Batman World</span>
           </a>
           <p className="brand-desc">Simple. Fast. Reliable.</p>
         </div>
@@ -48,11 +48,7 @@ e.preventDefault()
         </nav>
 
         <div className="footer-ad-newsletter" aria-label="Newsletter and ad">
-          <div className="ad-box" aria-hidden="true">
-            <strong>Ad spot</strong>
-            <p className="ad-text">Promote your offer here — short tagline or CTA.</p>
-            <a className="ad-cta" href="/advertise">Advertise with us</a>
-          </div>
+
 
           <form className="newsletter" onSubmit={submitu} aria-label="Subscribe to newsletter">
             <label htmlFor="footer-email" className="sr-only">Email</label>
@@ -64,7 +60,7 @@ e.preventDefault()
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} YourSite — All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Batman's World — All rights reserved.</p>
         <div className="socials" aria-label="Social links">
           <a href="https://twitter.com" className="social" aria-label="Twitter" target="_blank" rel="noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -43,8 +43,8 @@ export const {
     setActiveTabs,
     setError,
     setLoading,
-    setResults,
-    clearResults,
+    setReesults,
+    clearRsults,
     addResults
 } = searchSlice.actions
 
