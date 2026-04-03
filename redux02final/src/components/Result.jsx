@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react'
 import { fetchGIF, fetchVideos, unsplash } from '../api/api'
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveTabs, setError, setLoading, setResults } from '../features/searchslice'
+import { setActiveTabs, } from '../features/searchslice'
 import { FcLike } from "react-icons/fc";
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
